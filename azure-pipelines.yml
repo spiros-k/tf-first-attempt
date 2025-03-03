@@ -1,27 +1,27 @@
 trigger:
   branches:
     include:
-      -main
+      - main
 
 pool: 
-  vmImage: "ubuntu-latest"
+  vmImage: 'ubuntu-latest'
 
 variables:
 
 steps:
--task: TerraformInstaller@0
-  displayName: "Install Terraform"
+- task: TerraformInstaller@0
+  displayName: 'Install Terraform'
   inputs:
-    terraformVersion: "1.5.0"
+    terraformVersion: '1.5.0'
   
--script: |
+- script: |
     terraform init
-    display: "Terraform Init"
+    display: 'Terraform Init'
 
--script: |
+- script: |
     terraform plan -out=tfplan
-    display: "Terraform Plan"
+    display: 'Terraform Plan'
 
--script: |
+- script: |
     terraform apply tfplan
-    display: "Terraform Apply"
+    display: 'Terraform Apply'
